@@ -1,0 +1,762 @@
+/*
+* @Author: Eric
+* @Date: 2018-02-13
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: PingFangSC, 'helvetica neue', 'hiragino sans gb', arial, 'microsoft yahei ui', 'microsoft yahei', simsun, sans-serif;
+}
+html,
+body {
+    height: 100%;
+}
+
+#index .outline {
+    min-width: 1060px;
+}
+#index .wrap{
+    position: relative;
+    width: 850px;
+    margin: 0 auto;
+}
+#index .menu-wrap {
+    position: relative;
+    width: 1060px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/*menu*/
+#menu {
+    position: fixed;
+    color: white;
+    width: 100%;
+    height: 70px;
+    z-index: 999;
+    background-color: rgba(0,0,0,0.8);
+}
+#menu .brand {
+    display: inline-block;
+    height: 70px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+#menu .brand:hover{
+    opacity: 0.5;
+}
+#menu .brand .logo {
+    display: inline-block;
+    width: 160px;
+    height: 100%;
+    background-image: url(../img/logo/AlphaCar_Logo_160x36.png);
+    background-size: 160px 36px;
+    background-position: center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+#menu .brand .text {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 20px;
+    line-height: 70px;
+    vertical-align: middle;
+}
+#menu .glyphicon{
+    display: none;
+}
+#menu .content {
+    float: right;
+    height: 70px;
+    display: inline-block;
+    margin: 0 40px 0 0;
+    vertical-align: middle;
+}
+#menu .content>li {
+    position: relative;
+    list-style: none;
+    float: left;
+    padding: 0 10px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#menu .content>li.highlight{
+    border: 1px solid #FFFFFF;
+    /*border-radius: 2px;*/
+    padding: 4px 10px;
+    margin: 0 10px;
+}
+#menu .content>li.highlight:hover{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    background-image: linear-gradient(90deg, #00FFFF 0%, #0099FF 100%);
+}
+#menu .content>li.highlight:hover>a{
+    color: #FFFFFF;
+}
+#menu .content>li a{
+    text-decoration:none; 
+    color: #FFFFFF;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+#menu .content>li a:hover,
+#menu .content>li ul li:hover,
+#menu .login:hover{
+    color: #00FBFF;
+    cursor: pointer;
+}
+#menu .operation {
+    float: right;
+    height: 70px;
+    line-height: 70px;
+    margin: 0;
+}
+#menu .operation>li{
+    position: relative;
+    list-style: none;
+    float: right;
+    margin: 0 10px;
+    height: 70px;
+    line-height: 70px;
+}
+#menu .operation .language .flag {
+    display: inline-block;
+    width: 22px;
+    height: 15px;
+    background-position: center;
+    background-size: 22px 15px;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+#menu .operation .language .text {
+    display: inline-block;
+    position: relative;
+}
+#menu .operation .language .text span{
+    margin-left: 10px;
+}
+#menu .operation .language ul{
+    position: absolute;
+    right: 0;
+    top: 50px;
+    padding: 10px;
+    background-color: rgba(0, 21, 39, 0.9);
+}
+#menu .operation .language ul li{
+    position: relative;
+    list-style: none;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    cursor: pointer;
+    padding: 0 10px;
+    text-align: center;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+#menu .operation .language ul li:hover,
+#menu .operation .language ul li:hover div{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/*footer*/
+#footer{
+    padding: 10px 0;
+    background-color: #000000;
+    text-align: center;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+/*main-header*/
+#page .main-header{
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+    height: 800px;
+    background-image: url(../img/img_banner1920x1100.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#page .main-header .img{
+    position: absolute;
+    width: 512px;
+    height: 110px;
+    left: 50%;
+    margin-left: -256px;
+    top: 284px;
+    background-image: url(../img/logo/AlphaCar_Logo_512x110.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#page .main-header .title{
+    margin-top: 425px;
+    color: #4DEFFF;
+    font-size: 50px;
+    text-align: center;
+}
+#page .main-header .sub-title{
+    margin-top: 17.5px;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+}
+#page .main-header .text{
+    color: #FFFFFF;
+    font-size: 18px;
+    text-align: center;
+}
+
+/*minor-header*/
+#page .minor-header{
+    position: relative;
+    padding: 115px 0;
+    background-image: url(../img/img_chain1920x900.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#page .minor-header .img{
+    height: 60px;
+    line-height: 60px;
+    margin-bottom: 26px;
+}
+#page .minor-header .img>.title{
+    color: #FFFFFF;
+    font-size: 50px;
+}
+#page .minor-header .sub-title{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+#page .minor-header .text{
+    font-size: 16px;
+    color: white;
+}
+#page .minor-header .white-paper{
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    width: 200px;
+    font-size: 20px;
+    text-align: center;
+    line-height: unset;
+    padding: 10px;
+    margin-top: 40px;
+    color: #FFFFFF; 
+    cursor: pointer;
+}
+#page .minor-header .white-paper:hover{
+    border: 1px solid rgba(0,0,0,0.8);
+    background-image: linear-gradient(90deg, #00FFFF 0%, #0099FF 100%);
+}
+
+#page .body>div{
+    padding: 60px 0;
+}
+#page .body>div>.title,
+#page .body .wrap>.title{
+    color: #00FEFF;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+}
+#page .body>div>.sub-title,
+#page .body .wrap>.sub-title{
+    font-size: 14px;
+    color: #CCCCCC;
+    text-align: center;
+}
+
+/*module*/
+#page .module{
+    background-color: #000000;
+    overflow: hidden;
+    margin: 0;
+}
+#page .module li{
+    list-style: none;
+    float: left;
+    width: 33.33%;
+    padding: 0 20px;
+    text-align: center;
+}
+#page .module li .icon{
+    width: 62px;
+    height: 56px;
+    margin: 0 auto;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#page .module li .title{
+    font-size: 25px;
+    color: white;
+    margin: 15px 0;
+}
+#page .module li .text{
+    font-size: 16px;
+    color: #CCCCCC;
+}
+#page .module li .line{
+    height: 2px;
+    width: 70px;
+    margin: 15px auto;
+    background-image: linear-gradient(-90deg, #0099FF 0%, #00FFFF 100%);
+}
+
+/*introduce*/
+#page .introduce{
+    background-color: #001527;
+    overflow: hidden;
+}
+#page .introduce .left,
+#page .introduce .right{
+    float: left;
+    height: 292px;
+    background-color: #093356;
+    margin: 45px 0.5%;
+}
+#page .introduce .left{
+    width: 40%;
+    background-image: url(../img/img_chain430x362.png);
+    background-position: center;
+    background-size: auto 80%;
+    background-repeat: no-repeat;
+}
+#page .introduce .right{
+    width: 58%;
+    padding: 35px;
+}
+#page .introduce .right .title{
+    font-size: 16px;
+    color: #00FBFF;
+    padding: 0;
+    margin: 0 0 10px 0;
+    text-align: left;
+}
+#page .introduce .right .text{
+    font-size: 14px;
+    color: white;
+    margin-bottom: 20px;
+}
+#page .introduce .download{
+    text-align: center;
+}
+#page .introduce .download button{
+    width: 300px;
+    color: #00FBFF;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #00FBFF;
+    border-radius: 0;
+}
+
+/*club*/
+#page .club{
+    background-color: #001527;
+}
+#page .club>div>.icon{
+    margin: 0 auto 5px auto;
+    width: 360px;
+    height: 77px;
+    background-image: url(../img/logo/AlphaCar_Logo_360x77.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+#page .club ul{
+    margin-top: 25px;
+    overflow: hidden;
+    position: relative;
+}
+#page .club ul li{
+    float: left;
+    list-style: none;
+    width: 14.28%;
+    text-align: center;
+}
+#page .club ul li .serial{
+    position: relative;
+    height: 50px;
+}
+#page .club ul li .serial .circle{
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    top: 50%;
+    margin-top: -10.5px;
+    left: 50%;
+    margin-left: -10.5px;
+    border-radius: 50%;
+    border: 1px solid #00FFFF;
+    background-color: #000000;
+    text-align: center;
+    line-height: 21px;
+    color: #00FFFF;
+}
+#page .club ul .serial .horizon{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    margin-top: -0.5px;
+    background-color: #00FFFF;
+}
+#page .club ul li .serial .verital{
+    position: absolute;
+    width: 1px;
+    height: 15px;
+    background-color: #00FFFF;
+    left: 50%;
+    margin-left: -0.5px;
+    bottom: 0px;
+}
+#page .club ul li .icon{
+    margin: 14px auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid #00FFFF;
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#page .club ul li .title{
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+}
+#page .club ul li .text{
+    font-size: 12px;
+    color: #CCCCCC;
+    padding: 0 5px;
+}
+
+/*token*/
+#page .token{
+    background-color: #001527;
+    background-image: url(../img/img_token1920x976.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#page .token .chart{
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+}
+#page .token .chart-mobile{
+    display: none;
+}
+
+/*roadmap*/
+#page .roadmap{
+    background-color: #000000;
+}
+#page .roadmap .vetical{
+    position: absolute;
+    width: 1px;
+    background-color: #00FBFF;
+    left: 50%;
+    margin-left: -0.5px;
+}
+#page .roadmap ul{
+    position: relative;
+    margin: 30px 0 0 0;
+    overflow: hidden;
+}
+#page .roadmap ul li{
+    list-style: none;
+    position: absolute;
+    width: 50%;
+}
+#page .roadmap ul li .rect{
+    position: relative;
+    width: 90%;
+    padding: 15px;
+    border: 1px solid #00FBFF;
+}
+#page .roadmap ul li .rect .title{
+    font-size: 20px;
+    color: #00FBFF;
+}
+#page .roadmap ul li .rect .text{
+    font-size: 14px;
+    color: #CCCCCC;
+}
+#page .roadmap ul li .rect .triangle{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 50%;
+}
+#page .roadmap ul li.left .rect .triangle{
+    right: -20px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #00FBFF;
+    border-right: 10px solid transparent;
+}
+#page .roadmap ul li.right .rect .triangle{
+    left: -20px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #00FBFF;
+}
+#page .roadmap ul li .rect .triangle-mask{
+   position: absolute;
+   width: 0px;
+   height: 0px;
+   top: 50%;
+}
+#page .roadmap ul li.left .rect .triangle-mask{
+    right: -18px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #000000;
+    border-right: 10px solid transparent; 
+}
+#page .roadmap ul li.right .rect .triangle-mask{
+    left: -18px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #000000; 
+}
+
+#page .roadmap ul li .circle{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #00FBFF;
+    background-color: #000000;
+    top: 50%;
+    margin-top: -5px;
+}
+#page .roadmap ul li.left{
+    left: 0;
+}
+#page .roadmap ul li.left .circle{
+    right: -5px;
+}
+#page .roadmap ul li.right{
+    right: 0;
+}
+#page .roadmap ul li.right .circle{
+    left: -5px;
+}
+
+/*team*/
+#page .team{
+     background-color: #001527;
+     padding-bottom: 20px;
+     color: #FFFFFF;
+}
+#page .team .title{
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 251, 255, 0.5);
+}
+#page .team ul{
+    margin: 30px auto 0 auto;
+    position: relative;
+}
+#page .team ul li{
+    width: 33%;
+    text-align: center;
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 20px 30px 20px;
+    cursor: pointer;
+}
+#page .team .founder{
+    margin-bottom: 50px;
+}
+#page .team li .divline{
+    position: absolute;
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    background-color: #00FBFF;
+}
+#page .team li .img{
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#page .team li .name{
+    font-size: 20px;
+    color: #00FBFF;
+    margin-top: 15px;
+}
+#page .team li .identity{
+    font-size: 12px;
+    margin: 10px auto;
+}
+#page .team li .intro{
+    display: block;
+    font-size: 12px;
+    text-align: left;
+}
+#page .team .presentation{
+    width: 780px;
+    margin: 20px auto 0 auto;
+    padding: 20px;
+    text-align: left;
+    border: 1px solid rgba(0, 251, 255, 0.5);
+    background-color: #093356;
+}
+#page .team .team-border{
+    /*border-right: 1px solid rgba(0, 251, 255, 0.5);*/
+}
+#page .team .team-presentation{
+    display: none;
+}
+
+/*resource*/
+#page .resource{
+    background-image: linear-gradient(0deg, #00327D 0%, #00083C 100%);
+}
+#page .resource ul{
+    margin: 30px 0 0 0;
+}
+#page .resource ul li{
+    list-style: none;
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    background-color: white;
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*faq*/
+#page .FAQ{
+    background-color: #000000;
+    padding-bottom: 50px;
+}
+#page .FAQ .query-title,
+#page .FAQ .query-content{
+    font-size: 12px;
+    margin: 30px auto 0 auto;
+}
+#page .FAQ .query-title li{
+    list-style: none;
+    display: inline-block;
+    padding: 10px 17px;
+    margin-right: 10px;
+    color: #FFFFFF;
+    background-color: #093356;
+    cursor: pointer;
+}
+
+#page .FAQ .query-title li:hover,
+#page .FAQ .query-title .changeColor{
+    color: #000000;
+    background-image: linear-gradient(90deg, #00FFFF 0%, #0099FF 100%);
+}
+#page .FAQ .query-content li{
+    position: relative;
+    list-style: none;
+    color: #FFFFFF;
+    border-bottom: 1px solid rgba(85, 85, 85, 0.5);
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#page .FAQ .query-content li .query-ask{
+    margin-bottom: 20px;
+}
+#page .FAQ .query-content li .sign{
+    color: #00FEFF;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid #00FEFF;
+    float: left;
+    padding: 1px 4px;
+    margin-right: 10px;
+}
+#page .FAQ .query-content li .ask{
+    display: inline-block;
+    padding-top: 5px;
+    width: 80%;
+    color: #FFFFFF;
+}
+#page .FAQ .query-content li .more{
+    margin-top: 5px;
+    width:10px;
+    height: 10px;
+    background-size: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: right;
+    cursor: pointer;
+}
+#page .FAQ .query-content li .query-answer span{
+    padding-left: 32px;
+    margin-bottom: 15px;
+    display: inline-block;
+    width: 80%;
+    color: #CCCCCC;
+}
+#page .FAQ .text-blue{
+    color: #00DDFF !important;
+}
+
+/*contact*/
+#page .contact-us{
+    background-color: #001C37;
+}
+
+#page .contact-us ul.email{
+    text-align: center;
+    margin: 25px 0 49px 0;
+    color: #FFFFFF;
+}
+#page .contact-us ul.email li{
+    position: relative;
+    list-style: none;
+    display: inline;
+    margin: 0 15px;
+}
+#page .contact-us ul.email li a{
+    text-decoration:none; 
+    color: #FFFFFF;
+}
+#page .contact-us ul.email li a:hover{
+    cursor: pointer;
+    color: #00FBFF;
+}
+#page .contact-us ul.icon{
+    text-align: center;
+}
+#page .contact-us ul.icon li a{
+    list-style: none;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: #00FCFF;
+    background-size: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}

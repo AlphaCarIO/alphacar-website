@@ -1,0 +1,27 @@
+<div id="menu" ng-controller="menuCtrl">
+	<div class="menu-wrap">
+		<div class="brand" ui-sref="index.home">
+			<span class="logo"></span>
+			<!-- <span class="text" ng-bind="brandInfo.name"></span> -->
+		</div>
+		<div ng-click="menu = !menu" style="display: inline-block; float: left;">
+			<span class="hamburger pull-left"></span>
+		</div>
+		<ul class="operation">
+			<li class="language">
+				<div ng-click="select = !select" ng-mouseleave="select = 0" ng-mouseenter="select = 1">
+					<div class="flag" ng-style="{'background-image': 'url(' + currentLanguageInfo.image + ')'}"></div>
+					<div class="text"></span><span class="glyphicon glyphicon-triangle-bottom"></span></div>
+					<ul ng-if="select">
+						<li ng-repeat="item in languageInfo.list" ng-bind="item.title" ng-click="changeLanguage(item.value)"></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<ul class="content" ng-class="{'active': menu == 1}">
+			<li ng-repeat="item in menuList" ng-click="scrollTo(item.href, item.url)" ng-class="{'highlight': item.highlight}">
+				<a ng-bind="item.title"></a>
+			</li>
+		</ul>
+	</div>
+</div>

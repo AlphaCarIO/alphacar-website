@@ -1,0 +1,197 @@
+<div id="page" ng-controller="pageCtrl">
+	<div class="main-header">
+		<div class="img"></div>
+		<div class="title" ng-bind="mainHeaderInfo.title"></div>
+		<div class="sub-title" ng-bind="mainHeaderInfo.subTitle"></div>
+	</div>
+
+	<div class="minor-header">
+		<div class="wrap">
+			<div class="img">
+				<div class="title" ng-bind="minorHeaderInfo.brandName"></div>
+			</div>
+			<div class="text" ng-bind-html="minorHeaderInfo.text"></div>
+			<div class="white-paper" ng-bind="minorHeaderInfo.whitePaper" ng-click="scrollTo(minorHeaderInfo.whitePaperUrl)"></div>
+		</div>
+	</div>
+	<div class="body">
+		<div class="module">
+			<ul class="wrap">
+				<li ng-repeat="item in moduleInfo.list">
+					<div class="icon" ng-style="{'background-image': 'url(' + item.icon + ')'}"></div>
+					<div class="title" ng-bind-html="item.title"></div>
+					<div class="line"></div>
+					<div class="text" ng-bind="item.text"></div>
+				</li>
+			</ul>
+		</div>
+		<div id="club" class="club">
+			<div class="wrap">
+				<div class="icon"></div>
+				<ul>
+					<li ng-repeat="item in clubInfo.list" ng-class="{'left': $index % 2 == 1, 'right': $index % 2 == 0}">
+						<div class="serial">
+							<div class="verital"></div>
+							<div class="horizon"></div>
+							<div class="circle" ng-bind="$index + 1"></div>
+						</div>
+						<div class="verital"></div>
+						<div class="icon" ng-style="{'background-image': 'url(' + item.icon + ')'}">
+						</div>
+						<div class="title" ng-bind="item.title"></div>
+						<div class="text" ng-bind-html="item.text"></div>
+						
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="token" class="token">
+			<div class="wrap">
+				<div class="title">
+					<span class="text-center text-alpha" ng-bind="tokenInfo.title"></span>
+				</div>
+				<div class="sub-title" ng-bind="tokenInfo.subTitle"></div>
+				<div class="chart" ng-echarts ec-config="tokenPieChartOption" ec-option="tokenPieChartOption"></div>
+				<div class="chart-mobile" ng-echarts ec-config="tokenPieChartOptionMobile" ec-option="tokenPieChartOptionMobile"></div>
+			</div>
+		</div>
+		<div id="roadmap" class="roadmap">
+			<div class="wrap">
+				<div class="title">
+					<span class="text-alpha" ng-bind="roadmapInfo.title"></span>
+				</div>
+				
+				<ul ng-style="{'height': (roadmapInfo.list.length - 1) * 70 + 130}">
+					<div class="vetical" ng-style="{'height': (roadmapInfo.list.length - 1) * 70 + 115}"></div>
+					<li ng-repeat="item in roadmapInfo.list" ng-class="{'left': $index % 2 == 0, 'right': $index % 2 == 1 }" ng-style="{'top': $index * 70}">
+						<div class="circle"></div>
+						<div class="rect" ng-class="{'pull-left': $index % 2 == 0, 'pull-right': $index % 2 == 1, 'text-right': $index % 2 == 0, 'text-left': $index % 2 == 1}">
+							<div class="title" ng-bind="item.title"></div>
+							<div class="text" ng-bind="item.text"></div>
+							<div class="triangle"></div>
+							<div class="triangle-mask"></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="team" class="team">
+			<div class="title">
+				<span class="text-alpha" ng-bind="teamInfo.founderTitle"></span>
+			</div>
+			<div class="wrap founder">
+				<ul>
+					<li ng-repeat="item in teamInfo.founderList" ng-if="$index<3" ng-class="item.class" ng-mouseover="toShowPresentation(item, $index)">
+						<div class="img" ng-style="{'background-image': 'url(' + item.image + ')'}"></div>
+						<div class="right">
+							<div class="name" ng-bind="item.name"></div>
+							<div class="identity" ng-bind="item.identity"></div>
+							<div class="intro" ng-bind="item.intro"></div>
+							<div class="team-presentation" ng-bind="item.presentation"></div>
+						</div>
+						<div ng-if="item.class" class="divline" ng-style="{'left': 33 * ($index + 1) + '%'}"></div>
+					</li>
+				</ul>
+				<div class="presentation" ng-bind="presentation" ng-show="showPresentationOne">
+				</div>
+				<ul>
+					<li ng-repeat="item in teamInfo.founderList" ng-if="$index>2 && $index<4" ng-class="item.class" ng-mouseover="toShowPresentation(item, $index)">
+						<div class="img" ng-style="{'background-image': 'url(' + item.image + ')'}"></div>
+						<div class="right">
+							<div class="name" ng-bind="item.name"></div>
+							<div class="identity" ng-bind="item.identity"></div>
+							<div class="intro" ng-bind="item.intro"></div>
+							<div class="team-presentation" ng-bind="item.presentation"></div>
+						</div>
+						<div ng-if="item.class" class="divline" ng-style="{'left': 33 * ($index - 2) + '%'}"></div>
+					</li>
+				</ul>
+				<div class="presentation" ng-bind="presentation" ng-show="showPresentationTwo">
+				</div>
+			</div>
+			<div class="title">
+				<span class="text-alpha" ng-bind="teamInfo.consultantTitle"></span>
+			</div>
+			<div class="wrap consultant">
+				<ul>
+					<li ng-repeat="item in teamInfo.consultantList" ng-if="$index<3" ng-class="item.class" ng-mouseover="toShowShowCounselorPresentation(item, $index)">
+						<div class="img" ng-style="{'background-image': 'url(' + item.image + ')'}"></div>
+						<div class="right">
+							<div class="name" ng-bind="item.name"></div>
+							<div class="identity" ng-bind="item.identity"></div>
+							<div class="team-presentation" ng-bind="item.presentation"></div>
+							<div ng-if="item.class" class="divline" ng-style="{'left': 33 * ($index + 1) + '%'}"></div>
+						</div>
+					</li>
+				</ul>
+				<div class="presentation" ng-bind="counselorPresentation" ng-show="showCounselorPresentationOne"></div>
+				<ul>
+					<li ng-repeat="item in teamInfo.consultantList" ng-if="$index>2 && $index <6" ng-class="item.class" ng-mouseover="toShowShowCounselorPresentation(item, $index)">
+						<div class="img" ng-style="{'background-image': 'url(' + item.image + ')'}"></div>
+						<div class="right">
+							<div class="name" ng-bind="item.name"></div>
+							<div class="identity" ng-bind="item.identity"></div>
+							<div class="team-presentation" ng-bind="item.presentation"></div>
+							<div ng-if="item.class" class="divline" ng-style="{'left': 33 * ($index - 2) + '%'}"></div>
+						</div>
+					</li>
+				</ul>
+				<div class="presentation" ng-bind="counselorPresentation" ng-show="showCounselorPresentationTwo"></div>
+				<ul>
+					<li ng-repeat="item in teamInfo.consultantList" ng-if="$index>5" ng-class="item.class" ng-mouseover="toShowShowCounselorPresentation(item, $index)">
+						<div class="img" ng-style="{'background-image': 'url(' + item.image + ')'}"></div>
+						<div class="right">
+							<div class="name" ng-bind="item.name"></div>
+							<div class="identity" ng-bind="item.identity"></div>
+							<div class="team-presentation" ng-bind="item.presentation"></div>
+							<div ng-if="item.class" class="divline" ng-style="{'left': 33 * ($index - 5) + '%'}"></div>
+						</div>
+					</li>
+				</ul>
+				<div class="presentation" ng-bind="counselorPresentation" ng-show="showCounselorPresentationThree"></div>
+			</div>
+		</div>
+		<div id="FAQ" class="FAQ">
+			<div class="wrap">
+			<div class="title">
+				<span class="text-alpha" ng-bind="faqInfo.title"></span>
+			</div>
+			<ul class="query-title">
+				<li ng-repeat="item in faqInfo.list" ng-click="onChangeQueryContent(item , $index)" ng-class="{changeColor:$index== changeColor}">
+					<span class="btn-faq" ng-bind="item.title"></span>
+				</li>
+			</ul>
+			<ul class="query-content">
+				<li ng-repeat="item in queryContentList" ng-click="onShowAnswerClick(item)">
+					<div class="query-ask">
+						<span class="sign">Q</span>
+						<span class="ask" ng-class="{'text-blue': item.showAnswer}" ng-bind="item.ask"></span>
+						<span class="more" ng-style="{'background-image': 'url(' + item.image + ')'}"></span>
+					</div>
+					<div class="query-answer" ng-if="item.showAnswer">
+						<span ng-bind="item.answer"></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<div id="contact-us" class="contact-us">
+			<div class="wrap">
+				<div class="title">
+					<span  class="text-alpha" ng-bind="contactInfo.title"></span>
+				</div>
+				<ul class="email">
+					<li>
+						<a ng-bind="contactInfo.emailList[0].title" href="mailto:business@alphaauto.io"></a>
+					</li>
+					<li>
+						<a ng-bind="contactInfo.emailList[1].title" href="mailto:hr@alphaauto.io"></a>
+					</li>
+				</ul>
+				<ul class="icon">
+					<li><a ng-repeat="item in contactInfo.socialList" ng-style="{'background-image': 'url(' + item.image + ')'}" ng-click="scrollTo(item.url)"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
